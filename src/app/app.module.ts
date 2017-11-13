@@ -10,6 +10,17 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProductsProvider } from '../providers/products/products';
+import { ProductsPageModule } from '../pages/products/products.module';
+import { ProductsPage } from '../pages/products/products';
+import { HttpModule } from '@angular/http'
+
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+import { ProductDetailPageModule } from '../pages/product-detail/product-detail.module';
+import { BestSellersPageModule } from '../pages/best-sellers/best-sellers.module';
+import { BestSellersPage } from '../pages/best-sellers/best-sellers';
+import { FilterProductsModalPage } from '../pages/filter-products-modal/filter-products-modal';
+import { FilterProductsModalPageModule } from '../pages/filter-products-modal/filter-products-modal.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +32,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    ProductsPageModule,
+    BestSellersPageModule,
+    ProductDetailPageModule,
+    FilterProductsModalPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -29,12 +45,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    ProductsPage,
+    ProductDetailPage,
+    BestSellersPage,
+    FilterProductsModalPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProductsProvider
   ]
 })
 export class AppModule {}
